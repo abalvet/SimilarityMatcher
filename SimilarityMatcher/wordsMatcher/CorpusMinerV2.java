@@ -37,6 +37,8 @@ import tools.BufferedPrintFileToEncoding;
 public class CorpusMinerV2 {
     double _seuil = 0;
     static boolean _onlyPairs = false;
+    static String _justPairsHeader = "ID_Pairs\tREL_LEV_SCORE\tS1\tS2\n";
+    static String _pairsAndPatternsHeader = "ID_Pairs\tREL_LEV_SCORE\tS1\tS2\tXX\tYY\tINTERSECTION\tLCS_LENGTH\tINV_REL_LEV_SCORE\n";
     
     public boolean compareStrings(String a, String b)
         {
@@ -72,8 +74,7 @@ public class CorpusMinerV2 {
      */
     
     static void appendPairsToFile(File f, String encoding, String patterns, Double seuil){
-        String justPairsHeader = "ID_Pairs\tREL_LEV_SCORE\tS1\tS2\n";
-        String pairsAndPatternsHeader = "ID_Pairs\tREL_LEV_SCORE\tS1\tS2\tXX\tYY\tINTERSECTION\tLCS_LENGTH\tINV_REL_LEV_SCORE\n";
+
         File out = new File(f + "_patterns_" + encoding + "_" + seuil + ".csv");
         if(_onlyPairs){
             BufferedPrintFileToEncoding.printAppended(out,encoding,patterns);
@@ -129,6 +130,8 @@ public class CorpusMinerV2 {
                 dur = end - start;
                 System.out.println("Durée pb.run: " + dur);                                                                
                 File out = new File(f + "_patterns_" + encoding + "_" + seuil + ".csv");
+                //TODO: check pairsonly mode
+                BufferedPrintFileToEncoding.printAppended(out,encoding,_pairsAndPatternsHeader);
                 BufferedPrintFileToEncoding.printAppended(out,encoding,patterns);
                 //BufferedPrintFileToEncoding.printAppended(out,encoding,patternsBuffer.toString());
                 /*end = System.currentTimeMillis();
