@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Sun Jan 07 18:42:05 CET 2007
+onejar.license.required=false
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=true
+jarname=SimilarityMatcher_fat.jar
+manifest.mergeall=true
+manifest.mainclass=wordsMatcher.CorpusMinerV2
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

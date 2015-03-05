@@ -1,7 +1,7 @@
 /*
  * Date: 19 mai 2004
  * Notes: un bon seuil pour trouver l'armature des questions se situe aux alentours de 0.7,
- * en revanche, pour trouver la r�ponse la plus proche, un seuil plus bas (~0.55) est n�cessaire.
+ * en revanche, pour trouver la réponse la plus proche, un seuil plus bas (~0.55) est nécessaire.
  */
 package wordsMatcher;
 import java.io.*;

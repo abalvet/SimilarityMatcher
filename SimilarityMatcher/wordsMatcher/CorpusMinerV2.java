@@ -1,9 +1,8 @@
 /*
  * Created on 22 nov. 2005
- * Cr�� le 22 nov. 2005
+ * Créé le 22 nov. 2005
  */
 package wordsMatcher;
-//import java.awt.Toolkit;
 
 import java.io.*;
 import java.util.*;

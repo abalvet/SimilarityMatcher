@@ -1,6 +1,6 @@
 /*
  * Created on 22 nov. 2005
- * Cr�� le 22 nov. 2005
+ * Créé le 22 nov. 2005
  */
 package wordsMatcher;
 import java.io.*;
@@ -10,7 +10,8 @@ import java.lang.Double;
 import org.apache.commons.collections.*;
 import lcsalgorithms.OmniLCS;
 import tools.BufferedPrintFileToEncoding;
-import utils.*;
+import utils.InfoDisplay;
+import utils.Counting;
 
 /**
  * @author Balvet Antonio
@@ -103,6 +104,7 @@ InfoDisplay d = new InfoDisplay();
     
     public static String makePairs(TreeSet corpusTreeSet, Object[] corpusArray, double seuil, boolean pairsOnly, boolean charMode, String tokeniser) throws Exception{
         String out = "";
+        
         new InfoDisplay().printConsoleStatusBar(0, _maxNbOfPairs, 100);
         
         if(pairsOnly){//si on ne veut que des paires

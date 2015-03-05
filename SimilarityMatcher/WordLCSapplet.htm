@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+<h1 style="text-align: justify;">WordLCS</h1>
+<h2 style="text-align: justify;">D&eacute;finition</h2>
+<div style="text-align: justify;">Ceci est la version 1.0 d'une applet
+permettant de tester le principe de l'algorithme LCS (Longest Common
+Subsequence) sur les mots et non pas les caract&egrave;res.
+L'algorithme impl&eacute;ment&eacute; ici s'inspire de la programmation
+dynamique (cf. <a
+ href="http://www.nist.gov/dads/HTML/longestcommn.html">NIST Dictionary
+of Algorithms</a>) pour r&eacute;soudre le probl&egrave;me suivant:<br>
+</div>
+<ul style="text-align: justify;">
+  <li>soient 2 cha&icirc;nes (en pratique 2 cha&icirc;nes dont la
+distance d'&eacute;dition n'est pas trop importante)</li>
+  <li>donner la plus longue sous-cha&icirc;ne commune contigu&euml;
+(appel&eacute;e ici CLCS pour Contiguous Longest Common Substring)</li>
+  <li>donner la plus longue sous-cha&icirc;ne commune discontigu&euml;
+(appel&eacute;e ici DLCS pour Discontiguous Longest Common Substring).</li>
+</ul>
+<h2 style="text-align: justify;">Applications</h2>
+<div style="text-align: justify;">D'un point de vue linguistique, ce
+que l'algorithme ici impl&eacute;ment&eacute; permet de faire est tout
+simplement l'op&eacute;ration de segmentation, utilis&eacute;e en
+linguistique de corpus pour d&eacute;terminer quelles sont les
+unit&eacute;s d'un corpus transcrit sous la forme d'un texte comportant
+des mots typographiques. Il s'agit donc d'un outil vou&eacute; &agrave;
+assister les linguistes dans l'exploration de corpus textuels
+(transcriptions), en vue d'en extraire des unit&eacute;s linguistiques
+pertinentes. Cette applet repose sur un module logiciel de la
+plate-forme <a href="http://copt.sourceforge.net">CoPT</a>, en cours
+de constitution.<br>
+Telle quelle, cette applet ne permet de voir le r&eacute;sultat de
+l'algorithme que sur 2 cha&icirc;nes, ce qui permet d&eacute;j&agrave;
+de retrouver des patrons syntaxiques communs &agrave; 2 cha&icirc;nes
+de caract&egrave;res (i.e. 2 phrases). <br>
+Il faut imaginer le r&eacute;sultat d'un calcul exhaustif sur toutes
+les paires de phrases relativement proches (i.e. en-dessous d'une
+distance d'&eacute;dition donn&eacute;e) constituant un corpus de
+sp&eacute;cialit&eacute; (&agrave; suivre). Cette proc&eacute;dure, que
+j'ai test&eacute;e avec une version exp&eacute;rimentale des
+algorithmes impl&eacute;ment&eacute;s ici, permet d'extraire d'un
+m&ecirc;me mouvement:<br>
+<ul>
+  <li>des termes (&eacute;ventuellement compos&eacute;s)</li>
+  <li>des collocations</li>
+  <li>des patrons syntaxiques.</li>
+</ul>
+Il reste &agrave; faire &eacute;voluer cette applet vers une version
+plus compl&egrave;te, proc&eacute;dant &eacute;galement aux
+op&eacute;rations de commutation.<br>
+<h2>Pr&eacute;requis</h2>
+Cette applet a &eacute;t&eacute; compil&eacute;e avec la version 1.5 du
+jre de <a href="http://java.sun.com/j2se/1.5.0/download.jsp">Sun</a>
+(t&eacute;l&eacute;charger et installer l'interpr&eacute;teur en
+suivant le lien <a
+ href="http://javashoplm.sun.com/ECom/docs/Welcome.jsp?StoreId=22&amp;PartDetailId=jre-1.5.0_02-oth-JPR&amp;SiteId=JSC&amp;TransactionId=noreg"><b><u>Download
+JRE 5.0 Update 2</u></b></a>).<br>
+<h2>Utilisation</h2>
+Il est possible de tester l'applet en laissant les 2 cha&icirc;nes par
+d&eacute;faut ("Quelle est la capitale du Burundi ?" et "Quelle est la
+capitale <span style="font-style: italic;">officielle</span> du
+Burundi ?", questions extraites de la campagne EQUER 2004, portant sur
+l'&eacute;valuation des syst&egrave;mes Question/R&eacute;ponse). Vous
+pouvez &eacute;galement taper n'importe quelles cha&icirc;nes, &agrave;
+condition de respecter les conventions suivantes:<br>
+<ul>
+  <li>ne pas utiliser le caract&egrave;re "-" dans les cha&icirc;nes
+(pour cette version, "-" est un caract&egrave;re r&eacute;serv&eacute;,
+utilis&eacute; en interne); &ccedil;a marche (l'applet ne "crashe"
+pas), mais ce n'est pas recommand&eacute;<br>
+  </li>
+  <li>s&eacute;parer les caract&egrave;res de ponctuation des mots par
+un espace (ex: "a-t-il" =&gt; "a - t - il")</li>
+  <li>veiller &agrave; ne pas introduire plusieurs espaces ou
+tabulations (sinon ils sont compt&eacute;s comme des unit&eacute;s
+&agrave; segmenter).</li>
+</ul>
+Je n'ai pas test&eacute;, mais les chaines Unicode devraient &ecirc;tre
+support&eacute;es, &eacute;tant donn&eacute; que tout est &eacute;crit
+en Java.<br>
+<br>
+Pour tout commentaire, suggestion, notification de bug etc., vous
+pouvez me contacter &agrave; l'adresse suivante antonio.balvet at
+univ-lille3.fr (remplacer "at" par @).<br>
+<br>
+<applet code="WordLCSJApplet.class" codebase="." height="510"
+ width="700"></applet>
+<br>
+<br>
+<hr style="width: 100%; height: 2px;"><font size="-1">Applet de test du
+module CoPT WordLCS_V1<br>
+Auteur: Antonio BALVET, universit&eacute; Lille 3, UMR Silex, UMR Modyco<br>
+Date de cr&eacute;ation: 21/03/2005<br>
+Version: 1.0</font><br>
+<br>
+</div>
+</body>
+</html>
