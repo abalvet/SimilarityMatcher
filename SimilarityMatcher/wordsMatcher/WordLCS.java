@@ -6,7 +6,7 @@ package wordsMatcher;
 
 /**
  * @author Balvet Antonio
- * Essai d'implémentation d'une simili-LCS sur des mots, et non des caractères, inspirée de 
+ * Essai d'implï¿½mentation d'une simili-LCS sur des mots, et non des caractï¿½res, inspirï¿½e de 
  * l'approche tabulaire en programmation dynamique.
  * @version 1.0
  * Usage: le main attend 2 arguments, 2 strings.
@@ -52,7 +52,7 @@ String[][] _wordLCSTable;
             else if(b[i].equals(null))
                 y[i] = "-";
             }
-        //à la fin de cette boucle, on a 2 tables x et y contenant les mots de a et b respectivement
+        //ï¿½ la fin de cette boucle, on a 2 tables x et y contenant les mots de a et b respectivement
         //ou "-" si a ou b sont vides
         int indx ;
         int indy ;
@@ -62,7 +62,7 @@ String[][] _wordLCSTable;
             for(indy = 0; indy < max; indy++)
                 {
                 table[indx][indy] = this.compareStrings(x[indx],y[indy]);
-                //pour chaque colonne, on remplit table[indx][indy] avec le résultat
+                //pour chaque colonne, on remplit table[indx][indy] avec le rÃ©sultat
                 //de compareStrings, ligne par ligne
                 }
             }
@@ -175,7 +175,7 @@ String[][] _wordLCSTable;
 
         
         
-        //TODO: voir le problème de taille des tableaux
+        //TODO: voir le problÃ¨me de taille des tableaux
         //TODO: voir les configurations de poids 
         
         }

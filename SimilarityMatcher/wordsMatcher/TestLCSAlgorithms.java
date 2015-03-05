@@ -1,6 +1,6 @@
 /*
  * Created on 10 janv. 2006
- * Créé le 10 janv. 2006
+ * Crï¿½ï¿½ le 10 janv. 2006
  */
 package wordsMatcher;
 import tools.BufferedPrintFileToEncoding;
@@ -8,8 +8,8 @@ import java.io.File;
 import org.apache.commons.io.*;
 /**
  * @author Balvet Antonio
- * Classe pour tester les différents algorithmes de calcul de plus longues sous-chaînes 
- * et sous-séquences communes.
+ * Classe pour tester les diffÃ©rents algorithmes de calcul de plus longues sous-chaÃ®nes 
+ * et sous-sÃ©quences communes.
  */
 public class TestLCSAlgorithms {
     int _M = 0;

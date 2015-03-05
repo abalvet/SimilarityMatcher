@@ -1,6 +1,6 @@
 /*
  * Created on 13 janv. 2006
- * Créé le 13 janv. 2006
+ * CrÃ©Ã© le 13 janv. 2006
  */
 package wordsMatcher;
 

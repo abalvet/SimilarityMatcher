@@ -20,8 +20,8 @@ import org.apache.commons.collections.*;
 public class PairIndexer {
 static String _currentString;
 static String _currentWord = "";
-static String _separator =" ";//le séparateur d'éléments, par défaut un espace
-//TODO: probablement mieux d'avoir recours aux ensembles de caractères prédéfinis 
+static String _separator =" ";//le sï¿½parateur d'ï¿½lï¿½ments, par dï¿½faut un espace
+//TODO: probablement mieux d'avoir recours aux ensembles de caractï¿½res prï¿½dï¿½finis 
 static String _element1 = "";
 static String _element2 = "";
 static int _element1Size = 0;
@@ -34,7 +34,7 @@ static TreeSet _generalSequenceSet;
 String _currentPattern = "";
 
 	public MultiHashMap indexSequence(String[] sequence)
-//On utilise une MultiHashMap pour construire une table des différentes positions (offset) d'un même mot (string)
+//On utilise une MultiHashMap pour construire une table des diffï¿½rentes positions (offset) d'un mï¿½me mot (string)
 //ex: a::{0,4,6}
 	{
 	    _generalSequenceSet = new TreeSet();
@@ -47,19 +47,19 @@ String _currentPattern = "";
 	        _generalSequenceSet.add(_currentWord);
 	        //System.out.println("seqset: " + sequenceSet.size());
 	    }
-	    //à la fin de cette boucle, table contient la position de chaque mot, sequenceSet l'ensemble sans doublons
+	    //ï¿½ la fin de cette boucle, table contient la position de chaque mot, sequenceSet l'ensemble sans doublons
 	    //des mots de la String
 	    
 	    MultiHashMap mhm = new MultiHashMap();
 	    Enumeration e = table.keys();
-	    //on récupère les offsets, pour les stocker dans mhm sous forme de values: les string seront les keys
+	    //on rï¿½cupï¿½re les offsets, pour les stocker dans mhm sous forme de values: les string seront les keys
 	    while(e.hasMoreElements())
 	        {
 	        	Object k = e.nextElement();
 	        	Object w = table.get(k);
 	        	mhm.put(w,k);
 	        	//on stocke le mot comme une key, et l'offset comme une value
-	        	//on obtient une Collection de positions associée à chaque mot-key
+	        	//on obtient une Collection de positions associï¿½e ï¿½ chaque mot-key
 	        }
 	    return mhm;
 	}
@@ -79,7 +79,7 @@ String _currentPattern = "";
 	    	s2.addAll(_generalSequenceSet);
 	    	//_sequenceSet2 = _generalSequenceSet;
 	    	//System.out.println(_mhm1.keySet().toString() + _mhm1.values() +"\n" + _mhm2.keySet().toString() + _mhm2.values());
-	    	//le keySet permet de lister les séquences, alors que mhm.values retourne les positions
+	    	//le keySet permet de lister les sï¿½quences, alors que mhm.values retourne les positions
 	    	Vector interv = new Vector();
 	    	Vector unionv = new Vector();
             Vector disjv = new Vector();
@@ -151,11 +151,11 @@ String _currentPattern = "";
 	    	    tailleTab = _element2Size;//on calcule la taille maxi du tableau de mots/positions
 	    	    tailleShortestTab = _element1Size;
 	    		}
-	    		//à la fin de ces 2 tests, tailleTab contient la taille maxi du tableau, tailleShortestTab
+	    		//ï¿½ la fin de ces 2 tests, tailleTab contient la taille maxi du tableau, tailleShortestTab
 	    		//la taille du plus petit des segments
 	    	    
 	    	//String[] posAndWords = new String[tailleTab];
-	    	ArrayList posAndWords = new ArrayList(tailleTab);//une ArrayList est préférable: plus flexible
+	    	ArrayList posAndWords = new ArrayList(tailleTab);//une ArrayList est prï¿½fï¿½rable: plus flexible
 	    	for(int i = 0; i < tailleTab; i++)//on remplit le tableau de "_"
 	    	    {
 	    	    //posAndWords[i] = "_";
@@ -170,7 +170,7 @@ String _currentPattern = "";
 	    	    word = e.nextElement().toString();
 	    	    posList.clear();
 	    	    shortestPosList.clear();
-	    	    posList.addAll(longestMhm.getCollection(word));//on récupère pour le mot courant la liste des positions
+	    	    posList.addAll(longestMhm.getCollection(word));//on rï¿½cupï¿½re pour le mot courant la liste des positions
 	    	    shortestPosList.addAll(shortestMhm.getCollection(word));
 	    	    /*System.out.println("poslist: " + posList);
 	    	    System.out.println("sposlist: " + shortestPosList);*/
@@ -180,7 +180,7 @@ String _currentPattern = "";
 	    	    Integer posInt;
 	    	    Integer posIntShortest;
 	    	    for(int ind = 0; ind < posList.size(); ind++){//boucle de remplissage de posAndWords
-	    	        posInt = (Integer)posList.get(ind);//on récupère la position du mot traité dans le tableau de positions
+	    	        posInt = (Integer)posList.get(ind);//on rï¿½cupï¿½re la position du mot traitï¿½ dans le tableau de positions
 	    	        pos = posInt.intValue();
 	    	        if(ind < shortestPosList.size()){
 	    	            posIntShortest = (Integer)shortestPosList.get(ind);
@@ -188,7 +188,7 @@ String _currentPattern = "";
 	    	        	}
 	    	        /*System.out.println("Mot: " + word + " Pos: " + pos + "\t" + posList);
 	    	        System.out.println("Mot: " + word + " shortPos: " + posShortest + "\t" + shortestPosList);*/
-	    	        if(shortestPosList.size() < 2){//Pas de répétition
+	    	        if(shortestPosList.size() < 2){//Pas de rï¿½pï¿½tition
 	    	            if((intersectionVector.size() == shortestMhm.size())&&(shortestMhm.size() < longestMhm.size())){//1
 	    	                if(aligned(word,pos,word,posShortest)){
 	    	                    posAndWords.set(pos,word);
@@ -197,10 +197,10 @@ String _currentPattern = "";
 	    	                    posAndWords.set(pos,"(MOV:" + word + "," + posShortest + "=>" + pos +")");
 	    	                    }
 	    	        		}//1
-	    	            else{//Déplacement d'élément: shortestMhm < intersectionVector
+	    	            else{//Dï¿½placement d'ï¿½lï¿½ment: shortestMhm < intersectionVector
 	    	                if(aligned(word,pos,word,posShortest)){//2
 	    	                    //posAndWords.set(pos,"(MOV:" + word + posShortest + "=>" + pos + ")");
-	    	                    posAndWords.set(pos,word);//TODO: régler problème plus tard
+	    	                    posAndWords.set(pos,word);//TODO: rï¿½gler problï¿½me plus tard
 	    	            		}//2
 	    	            	}
 	    	            if((intersectionVector.size() == shortestMhm.size())&& (shortestMhm.size() == longestMhm.size())){
@@ -211,7 +211,7 @@ String _currentPattern = "";
 	    	                }
 	    	        }
 	    	        else{	    	            
-	    	            if(aligned(word,pos,word,posShortest)){//tant que les mots sont alignés on écrit dans posAndWords
+	    	            if(aligned(word,pos,word,posShortest)){//tant que les mots sont alignï¿½s on ï¿½crit dans posAndWords
     	                    posAndWords.set(pos,word);
     	            		}
 	    	            else{	    	                
@@ -235,14 +235,14 @@ String _currentPattern = "";
 	    	            posShortest = posIntShortest.intValue();
 	    	            System.out.println("Mot: " + word + " shortPos: " + posShortest + "\t");
 	    	        	}
-	    	        if(posShortest == pos){//si les 2 formes sont alignées
+	    	        if(posShortest == pos){//si les 2 formes sont alignï¿½es
 	    	            //posAndWords[pos] = word;
 	    	            System.out.println("align: " + word);
 	    	            posAndWords.set(pos,word);
 	    	        	}	    	        
-	    	        else if(posShortest != pos){//si les 2 formes ne sont pas alignées
+	    	        else if(posShortest != pos){//si les 2 formes ne sont pas alignï¿½es
 	    	            //System.out.println("word: " + word);
-	    	            if(posAndWords.contains(word)){//si le mot est répété, donc à plusieurs endroits de la chaîne
+	    	            if(posAndWords.contains(word)){//si le mot est rï¿½pï¿½tï¿½, donc ï¿½ plusieurs endroits de la chaï¿½ne
 	    	                System.out.println("repet word: " + word);
 	    	                //posAndWords[pos] = word + "(MOV:[" + posShortest + "=>" + pos + "]" + ")";
 		    	            posAndWords.set(pos,word + "(REP:[" + posShortest + "," + pos + "]" + ")");
@@ -251,12 +251,12 @@ String _currentPattern = "";
 	    	                posAndWords.set(pos,"(ADD:" + word + ")");
 	    	                }
  
-	    	            //ET si posAndWords ne contient pas déjà word (pas un MOV)
+	    	            //ET si posAndWords ne contient pas dï¿½jï¿½ word (pas un MOV)
 	    	        	}*/
 	    	    }//fin: for
 	    	}//fin: while
-	    	//à la fin de cette boucle, on a un tableau posAndWords rempli de mots de intersectionVector aux positions 
-	    	//trouvées dans le longestMhm
+	    	//ï¿½ la fin de cette boucle, on a un tableau posAndWords rempli de mots de intersectionVector aux positions 
+	    	//trouvï¿½es dans le longestMhm
 	    	
 	    	//System.out.print("\n");
 	    	/*for(int n = 0; n < posAndWords.length; n++)
@@ -275,7 +275,7 @@ String _currentPattern = "";
 	    	return toWrite;
 	    }
 
-	public boolean aligned(String a, int pos1, String b, int pos2){//retourne true si les 2 chaînes sont alignées: même String/même position
+	public boolean aligned(String a, int pos1, String b, int pos2){//retourne true si les 2 chaï¿½nes sont alignï¿½es: mï¿½me String/mï¿½me position
 	    boolean align = false;
 	    if(a.equals(b)&&(pos1 == pos2)){
 	        align = true;
@@ -301,31 +301,31 @@ public static void main(String[] args) {
     	//cas normal insertions multiples:OK
     	/*String[] tata = {"A","X","B","Y","C"};
     	String[] toto = {"A","B","C"};*/
-		//cas identité: OK
+		//cas identitï¿½: OK
 		/*String[] tata = {"A","B","C"};
 		String[] toto = {"A","B","C"};*/
-		//cas déplacement: OK
+		//cas dï¿½placement: OK
 		/*String[] tata = {"C","B","A"};
 		String[] toto = {"A","B","C"};*/
-		//cas déplacement: OK
+		//cas dï¿½placement: OK
 		/*String[] tata = {"A","B","C"};
 		String[] toto = {"B","A"};*/
-		//cas déplacement: OK
+		//cas dï¿½placement: OK
     	/*String[] tata = {"A","B"};
     	String[] toto = {"B","A"};*/
-    	//cas déplacement: X
+    	//cas dï¿½placement: X
 		/*String[] tata = {"A","B","C","D","E"};
 		String[] toto = {"A","B","D","E","C"};*/
-    	//cas déplacement: OK
+    	//cas dï¿½placement: OK
 		/*String[] tata = {"A","B","C"};
 		String[] toto = {"C","B","A"};*/
-    	//cas répétition: OK
+    	//cas rï¿½pï¿½tition: OK
 		/*String[] tata = {"C","B","A"};
 		String[] toto = {"C","B","B"};*/
-    	//cas répétition:OK
+    	//cas rï¿½pï¿½tition:OK
     	/*String[] tata = {"A","B","C","D"};
     	String[] toto = {"A","B","B","D"};*/
-    	//cas répétition:OK
+    	//cas rï¿½pï¿½tition:OK
     	String[] toto = {"A","B","C"};
     	String[] tata = {"A","X","C","D"};
     	/*String[] tata = {"A","B","C"};
@@ -341,7 +341,7 @@ public static void main(String[] args) {
     	
     	/*String[] titi = {"A","B","C","D"};
     	String[] tata = {"le","chat","mange","la","souris"};
-    	 String[] toto = {"le","très","gros","chat","poilu","mange","goulûment","la","toute","petite","souris","grise"};*/
+    	 String[] toto = {"le","trï¿½s","gros","chat","poilu","mange","goulï¿½ment","la","toute","petite","souris","grise"};*/
     	PairIndexer p = new PairIndexer();
     	/*String[] toto = {"<NB>", "%","alors", "que", "Kalisto", "les", "cotations", "n'ont", "toujours", "pas", "pu", "reprendre"};
     	String[] tata = {"<NB>" ,"%" ,"alors", "que", "Suez", "recule", "de", "<NB>"};*/
@@ -390,7 +390,7 @@ public String get_element1()
     }
 /**
  * @param _element1 The _element1 to set.
- * @param _element1 Le _element1 à paramétrer.
+ * @param _element1 Le _element1 ï¿½ paramï¿½trer.
  */
 public void set_element1(String anelement)
     {
@@ -407,7 +407,7 @@ public String get_element2()
     }
 /**
  * @param _element2 The _element2 to set.
- * @param _element2 Le _element2 à paramétrer.
+ * @param _element2 Le _element2 Ã  paramÃ©trer.
  */
 public void set_element2(String anelement)
     {
@@ -426,7 +426,7 @@ public TreeSet get_generalSequenceSet()
     }
 /**
  * @param set2 The _sequenceSet2 to set.
- * @param set2 Le _sequenceSet2 à paramétrer.
+ * @param set2 Le _sequenceSet2 Ã  paramÃ©trer.
  */
 public void set_generalSequenceSet(TreeSet aset)
     {
@@ -443,7 +443,7 @@ public static MultiHashMap get_mhm1()
     }
 /**
  * @param _mhm1 The _mhm1 to set.
- * @param _mhm1 Le _mhm1 à paramétrer.
+ * @param _mhm1 Le _mhm1 Ã  paramÃ©trer.
  */
 public static void set_mhm1(MultiHashMap _mhm1)
     {
@@ -459,7 +459,7 @@ public static MultiHashMap get_mhm2()
     }
 /**
  * @param _mhm2 The _mhm2 to set.
- * @param _mhm2 Le _mhm2 à paramétrer.
+ * @param _mhm2 Le _mhm2 ï¿½ paramï¿½trer.
  */
 public static void set_mhm2(MultiHashMap _mhm2)
     {
