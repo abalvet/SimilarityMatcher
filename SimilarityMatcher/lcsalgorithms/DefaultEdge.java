@@ -89,7 +89,7 @@ public class DefaultEdge {
 
 
 
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		DefaultEdge de = new DefaultEdge();
 		de.set_EDGEID(12);
@@ -104,14 +104,9 @@ public class DefaultEdge {
 		
 		de.set_SOURCE(v0);
 		de.set_TARGET(v1);
-		v0._OUTVERTICES.add(v1);
-		v1._INVERTICES.add(v0);
+		v0._OUTGOINGEDGES.add(v1);
+		v1._INCOMINGEDGES.add(v0);
 
-		System.out.println("v0 target: " + v0._OUTVERTICES);
-		System.out.println("v0 source: " + v0._INVERTICES);
-		System.out.println("v1 target: " + v1._OUTVERTICES);
-		System.out.println("v1 source: " + v1._INVERTICES);
-		System.out.println("edge: " + de);
-	}
+	}*/
 
 }

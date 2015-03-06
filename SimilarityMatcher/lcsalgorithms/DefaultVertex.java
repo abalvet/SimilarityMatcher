@@ -8,8 +8,8 @@ public class DefaultVertex {
 	
 	protected UUID _VERTEXID ;
 	protected String _VERTEXLABEL = "";
-	protected ArrayList<DefaultVertex> _INVERTICES = new ArrayList<DefaultVertex>();
-	protected ArrayList<DefaultVertex> _OUTVERTICES = new ArrayList<DefaultVertex>();
+	protected ArrayList<DefaultVertex> _INCOMINGEDGES = new ArrayList<DefaultVertex>();
+	protected ArrayList<DefaultVertex> _OUTGOINGEDGES = new ArrayList<DefaultVertex>();
 	
 	protected void createVertexID(){
 		UUID uniqueId = this.GenerateUUID();
@@ -25,12 +25,20 @@ public class DefaultVertex {
 		return out;
 	}
 	
-	void addInvertex(DefaultVertex in){
-		this._INVERTICES.add(in);
+	void addIncomingEdge(DefaultVertex in){//TODO: check whether edge source-->this already exists
+		//when adding an incoming edge to current node
+		//the source node must be notified it now has an 
+		//outgoing edge
+		this._INCOMINGEDGES.add(in);
+		in._OUTGOINGEDGES.add(this);
 	}
 
-	void addOutvertex(DefaultVertex out){
-		this._OUTVERTICES.add(out);
+	void addOutgoingEdge(DefaultVertex out){//TODO: check whether edge this-->target already exists
+		//when adding an outgoing edge
+		//the target node must be notified it now has an
+		//incoming edge
+		this._OUTGOINGEDGES.add(out);
+		out._INCOMINGEDGES.add(this);
 	}
 	
 
@@ -73,18 +81,53 @@ public class DefaultVertex {
 		this._VERTEXLABEL = _VERTEXLABEL;
 	}
 
-
+	public static void printVertex(DefaultVertex v){
+		ArrayList<String> str = new ArrayList<String>();
+		//str.add("Digraph g");
+		str.add(v.get_VERTEXID().toString());
+		str.add(v.get_VERTEXLABEL());
+		System.out.println(str);
+		
+		ArrayList<DefaultVertex> out = v._OUTGOINGEDGES;
+		for (DefaultVertex vertex : out) {
+			System.out.println(v.get_VERTEXLABEL() + " --> ");
+			printVertex(vertex);
+		}	
+		
+	}
 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		DefaultVertex dv = new DefaultVertex();
-		ArrayList<DefaultVertex> in = new ArrayList<DefaultVertex>();
-		ArrayList<DefaultVertex> out = new ArrayList<DefaultVertex>();
-		dv.set_VERTEXLABEL("test");
-		dv.createVertexID();
-		System.out.println("vertex: " + dv.get_VERTEXLABEL() + ", " + dv.get_VERTEXID());
-
+		/**
+		 * v1	--> v2 --> v3
+		 * 	  	--> v3
+		 * 		
+		 */
+		DefaultVertex dv1 = new DefaultVertex();
+		dv1.set_VERTEXLABEL("v1");
+		dv1.createVertexID();
+		
+		DefaultVertex dv2 = new DefaultVertex();
+		dv2.set_VERTEXLABEL("v2");
+		dv2.createVertexID();
+		
+		DefaultVertex dv3 = new DefaultVertex();
+		dv3.set_VERTEXLABEL("v3");
+		dv3.createVertexID();
+		
+		DefaultVertex dv4 = new DefaultVertex();
+		dv4.set_VERTEXLABEL("v4");
+		dv4.createVertexID();
+		
+		dv1.addOutgoingEdge(dv2);
+		dv1.addOutgoingEdge(dv3);
+		dv2.addOutgoingEdge(dv3);
+		dv3.addOutgoingEdge(dv4);
+		System.out.println("infos sur dv1:");
+		printVertex(dv1);
+		System.out.println("infos sur dv3");
+		printVertex(dv3);
+		
 	}
 
 }
