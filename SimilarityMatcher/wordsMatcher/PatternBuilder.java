@@ -143,7 +143,7 @@ InfoDisplay d = new InfoDisplay();
                 //System.out.println("retrieved pair: " + pair1 + ":" + s1 + "\t" + pair2 + ":" + s2 + ":" + _ls.getRelLevScore(s1,s2));
                 if(pairsOnly){
                     if(isClose(s1,s2)){
-                    _justPairs += "[:" + pair1 + "," + pair2 + "]" + "\t" + s1 + "\t" + s2 + "\t" + _relscore + "\n";
+                    _justPairs += "[:" + pair1 + "," + pair2 + "]" + "\t" + _relscore + "\t" + s1 + "\t" + s2 + "\n";
                     //System.out.println("justpairs: " + _justPairs);
                     }
                 }

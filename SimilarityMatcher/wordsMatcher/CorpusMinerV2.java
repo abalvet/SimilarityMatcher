@@ -6,7 +6,9 @@ package wordsMatcher;
 
 import java.io.*;
 import java.util.*;
+
 import tools.BufferedPrintFileToEncoding;
+import utils.GenerateExcelFile;
 
 
 /**
@@ -34,6 +36,7 @@ import tools.BufferedPrintFileToEncoding;
  * TODO: rajouter une fonction d'estimation du nombre de paires générées: NbPairs = n * n-1; avec n nombre d'éléments
  */
 public class CorpusMinerV2 {
+	static String _version = "1.0";
     double _seuil = 0;
     static boolean _onlyPairs = false;
     static String _justPairsHeader = "ID_Pairs\tREL_LEV_SCORE\tS1\tS2\n";
@@ -85,7 +88,9 @@ public class CorpusMinerV2 {
     
     public static void main(String[] args) throws Exception
         {
+    	StringBuilder strb = new StringBuilder();
             System.err.println("nb argts: " + args.length);
+            System.err.println("SimilarityMatcher version: " + _version);
             if(args.length < 6){
                 System.out.println("USAGE: <FICHIER> <SEUIL> <ENCODAGE> <PAIRES_SEULES> <MODE_CARACTERES> <TOKENISEUR>"
                                     + "\n<FICHIER>: fichier à traiter, formatté en un élément de paire par ligne"
@@ -130,8 +135,22 @@ public class CorpusMinerV2 {
                 System.out.println("Durée pb.run: " + dur);                                                                
                 File out = new File(f + "_patterns_" + encoding + "_" + seuil + ".csv");
                 //TODO: check pairsonly mode
-                BufferedPrintFileToEncoding.printAppended(out,encoding,_pairsAndPatternsHeader);
+                if(_onlyPairs){
+                	BufferedPrintFileToEncoding.printAppended(out,encoding,_justPairsHeader);
+                	strb.append(_justPairsHeader);
+                }
+                else{
+                	BufferedPrintFileToEncoding.printAppended(out,encoding,_pairsAndPatternsHeader);
+                	strb.append(_pairsAndPatternsHeader);
+                }
                 BufferedPrintFileToEncoding.printAppended(out,encoding,patterns);
+                strb.append(patterns);
+                GenerateExcelFile.printCSVTextToExcel(strb.toString(), f + seuil + ".xls");
+
+                //TODO: add metrics: 
+                //TODO: length of LCS / length of Max(input String)
+                //TODO: mean edit distance for the whole corpus: sum edit distance/nb pairs(?)
+                
                 //BufferedPrintFileToEncoding.printAppended(out,encoding,patternsBuffer.toString());
                 /*end = System.currentTimeMillis();
                 dur = end - start;
