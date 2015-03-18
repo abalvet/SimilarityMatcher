@@ -2,3 +2,5 @@
 /InfoDisplay.class
 /TextGenerator.class
 /GenerateExcelFile.class
+/PrepareFileForCorpusMiner.class
+/SetOperations.class

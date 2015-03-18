@@ -90,8 +90,9 @@ public class DefaultSimpleGraph {
 	}
 
 	public static void main(String[] args) {
+		
 		// TODO Auto-generated method stub
-		DefaultSimpleGraph g = new DefaultSimpleGraph();
+		/*DefaultSimpleGraph g = new DefaultSimpleGraph();
 		DefaultVertex v1 = new DefaultVertex();
 		DefaultVertex v2 = new DefaultVertex();
 		DefaultVertex v3 = new DefaultVertex();
@@ -124,7 +125,7 @@ public class DefaultSimpleGraph {
 		g.addEdge(v3, v5);//C --> E
 		
 		//g.asciiPrintGraph(g);
-		g.dotPrintGraph(g, "/Users/antonio/Documents/Recherche/Tests/out.dot");
+		g.dotPrintGraph(g, "/Users/antonio/Documents/Recherche/Tests/out.dot");*/
 
 	}
 

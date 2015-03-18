@@ -1,6 +1,7 @@
 /*
  * Created on 22 nov. 2005
  * Créé le 22 nov. 2005
+ * Updated on mar. 2015
  */
 package wordsMatcher;
 
@@ -36,7 +37,7 @@ import utils.GenerateExcelFile;
  * TODO: rajouter une fonction d'estimation du nombre de paires générées: NbPairs = n * n-1; avec n nombre d'éléments
  */
 public class CorpusMinerV2 {
-	static String _version = "1.0";
+	static String _version = "2.1";
     double _seuil = 0;
     static boolean _onlyPairs = false;
     static String _justPairsHeader = "ID_Pairs\tREL_LEV_SCORE\tS1\tS2\n";

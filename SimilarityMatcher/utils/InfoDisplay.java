@@ -8,18 +8,18 @@ public final class InfoDisplay {
     public void printConsoleStatusBar(int begin, int end, int step) throws Exception{
         System.err.print("working: ");
         for(int i = begin; i <=end; i= i + step){
-          System.err.print("    |\r");
+          System.err.print("    |");
           Thread.sleep(50);   
-          System.err.print("    +\r");
+          System.err.print("    +");
           Thread.sleep(50);   
-          System.err.print("    \\r");
+          System.err.print("    \\");
           Thread.sleep(50);   
-          System.err.print("    =\r");
+          System.err.print("    =");
           Thread.sleep(50);   
-          System.err.print("    /\r");
+          System.err.print("    /");
         }    
-        System.err.print("    *\r");
-        System.err.println("\rDone!!!!         ");
+        System.err.print("    *");
+        System.err.println("Done!!!!         ");
     }
     
     public static void main(String[] args) throws Exception{
